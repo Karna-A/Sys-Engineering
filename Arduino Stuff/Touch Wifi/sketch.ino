@@ -1,7 +1,9 @@
 #include <WiFi.h>
+#include <SPI.h>
 
 const char* ssid     = "TPG 7C42";
 const char* password = "abcd1976";
+const char* host = "127.0.0.1";
 
 // const char* ssid     = "edu.Trade";
 // const char* password = "Welcome@2020";
@@ -20,7 +22,7 @@ void setup()
 
 WiFi.begin(ssid, password);
 
-    while (WiFi.status() != WL_CONNECTED) {
+    while (WiFi.status() != WL_CONNECTED) { 
         delay(500);
         Serial.print(".");
     }
