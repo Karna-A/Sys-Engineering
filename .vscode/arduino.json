@@ -1,5 +1,5 @@
 {
-    "board": "esp32:esp32:node32s",
+    "board": "esp32:esp32:nodemcu-32s",
     "configuration": "FlashFreq=80,UploadSpeed=921600",
     "port": "COM3",
     "sketch": "Arduino Stuff\\Touch\\Touch.ino",
