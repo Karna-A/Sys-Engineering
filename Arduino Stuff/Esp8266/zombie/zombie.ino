@@ -1,4 +1,4 @@
-#include <ESP8266WiFi.h>
+#include <WiFi.h>
 #include <SPI.h>
 #include <HardwareSerial.h>
 
@@ -30,7 +30,7 @@ const char* server = "maker.ifttt.com";
 bool ButtonState = false;
 void setup()
 {
-  pinMode(2,INPUT_DOwn);
+  pinMode(2,OUTPUT);
   Serial.begin(115200);
   delay(100); // give me time to bring up serial monitor
 
@@ -54,10 +54,9 @@ WiFi.begin(ssid, password);
     
 }
 int value = 0;
-
 void loop()
 {
-   if (digitalRead(2)==0){
+   if (touchRead(T0)==0){
     Serial.print("Button pressed ");
     makeIFTTTRequest();
 
@@ -99,28 +98,10 @@ int retries = 5;
   // Temperature in Celsius
   String jsonObject = String("{\"value1\":\"") + NAME + "\",\"value2\":\"" + ID
                       + "\"}";
-
-  client.println(String("POST ") + resource + " HTTP/1.1");
-  client.println(String("Host: ") + server);
-  client.println("Connection: close\r\nContent-Type: application/json");
-  client.print("Content-Length: ");
-  client.println(jsonObject.length());
-  client.println();
-  client.println(jsonObject);
-
-  int timeout = 5 * 10; // 5 seconds
-  while (!!!client.available() && (timeout-- > 0)) {
-    delay(100);
+       
+// Post the button press to IFTTT
+  if (client.connect(server, httpPort)) {
+      Serial.print("hurray");
+      delay(500);
   }
-  if (!!!client.available()) {
-    Serial.println("No response...");
-  }
-  while (client.available()) {
-    Serial.write(client.read());
-  }
-
-  Serial.println("\nclosing connection");
-  client.stop();
-
-
 }

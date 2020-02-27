@@ -1,10 +1,19 @@
-#include <ESP8266WiFi.h>
+#include <WiFi.h>
 #include <SPI.h>
 #include <HardwareSerial.h>
 
 #define LED 2
 const char* NAME;
 const char* ID;
+String Event_Name = "Button Press";
+String Key = "dqh2EClLMhF_vUzXaj8DO6"; //Webhooks key for IFTT https://maker.ifttt.com/trigger/{event}/with/key/dqh2EClLMhF_vUzXaj8DO6
+
+// Replace with your unique IFTTT URL resource
+//String resource = "/trigger/" + Event_Name + "/with/key/" + Key;
+String resource = "/trigger/" +Event_Name+ "/with/key/" + Key;
+
+const char* server = "maker.ifttt.com";
+
 const char* ssid     = "TPG 7C42";
 const char* password = "abcd1976";
 //const char* ssid     = "edu.Trade";
@@ -12,33 +21,16 @@ const char* password = "abcd1976";
 const char* host = "12.0.0.1";
 const uint16_t port = 17;
 
-
-String Event_Name = "Button Press";
-String Key = "dqh2EClLMhF_vUzXaj8DO6"; //Webhooks key for IFTT https://maker.ifttt.com/trigger/{event}/with/key/dqh2EClLMhF_vUzXaj8DO6
-
-
-
-// Replace with your unique IFTTT URL resource
-//String resource = "/trigger/" + Event_Name + "/with/key/" + Key;
-String resource = "/trigger/" +Event_Name+ "/with/key/" + Key;
-
-
-// Maker Webhooks IFTTT
-const char* server = "maker.ifttt.com";
-
-
 bool ButtonState = false;
 void setup()
 {
-  pinMode(2,INPUT_DOwn);
-  Serial.begin(115200);
-  delay(100); // give me time to bring up serial monitor
-
-
-  Serial.println();
-  Serial.println();
-  Serial.print("Connecting to ");
-  Serial.println(ssid);
+    pinMode(LED,OUTPUT);
+    Serial.begin(115200);
+        delay(10);
+            Serial.println();
+            Serial.println();
+            Serial.print("Connecting to ");
+            Serial.println(ssid);
 
 WiFi.begin(ssid, password);
 
@@ -57,11 +49,12 @@ int value = 0;
 
 void loop()
 {
-   if (digitalRead(2)==0){
-    Serial.print("Button pressed ");
+  if (touchRead(T0)==0){
+    Serial.println("Button pressed");
     makeIFTTTRequest();
+  }
 
-  }if (WiFi.status() == WL_CONNECTED ){
+  if (WiFi.status() == WL_CONNECTED ){
         delay(500);
         digitalWrite(LED,HIGH);
         delay(500);
@@ -72,20 +65,13 @@ void loop()
   // if (touchRead(T0)>0) Serial.println("Button nozt Pressed");
   //     delay(1000);
 }
+void makeIFTTTRequest() {
+  Serial.print("Connecting to ");
+  Serial.print(server);
 
-void makeIFTTTRequest () {
-Serial.println("Connecting to ");
-Serial.print(server);
-
-WiFiClient client;
-
-const int httpPort = 80;
-
-if (!client.connect(server, httpPort)) {
-    return;
-}
-int retries = 5;
-  while (!!!client.connect(server, httpPort) && (retries-- > 0)) {
+  WiFiClient client;
+  int retries = 5;
+  while (!!!client.connect(server, 80) && (retries-- > 5)) {
     Serial.print(".");
   }
   Serial.println();
@@ -97,7 +83,7 @@ int retries = 5;
   Serial.println(resource);
 
   // Temperature in Celsius
-  String jsonObject = String("{\"value1\":\"") + NAME + "\",\"value2\":\"" + ID
+ String jsonObject = String("{\"value1\":\"") + NAME + "\",\"value2\":\"" + ID
                       + "\"}";
 
   client.println(String("POST ") + resource + " HTTP/1.1");
@@ -121,6 +107,6 @@ int retries = 5;
 
   Serial.println("\nclosing connection");
   client.stop();
-
-
 }
+
+
