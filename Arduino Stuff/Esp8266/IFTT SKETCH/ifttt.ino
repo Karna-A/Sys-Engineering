@@ -9,7 +9,7 @@ const char* ssid     = "TPG 7C42";
 const char* password = "abcd1976";
 //const char* ssid     = "edu.Trade";
 //const char* password = "Welcome@2020";
-const char* host = "maker.ifttt.com";
+const char* host = "12.0.0.1";
 const uint16_t port = 17;
 
 
@@ -30,7 +30,7 @@ const char* server = "maker.ifttt.com";
 bool ButtonState = false;
 void setup()
 {
-  pinMode(2,INPUT_PULLUP);
+  pinMode(2,INPUT_DOwn);
   Serial.begin(115200);
   delay(100); // give me time to bring up serial monitor
 
@@ -51,13 +51,14 @@ WiFi.begin(ssid, password);
     Serial.println("WiFi connected");
     Serial.println("IP address: ");
     Serial.println(WiFi.localIP());
+    
 }
 int value = 0;
 
 void loop()
 {
    if (digitalRead(2)==0){
-    Serial.print("Button pressed");
+    Serial.print("Button pressed ");
     makeIFTTTRequest();
 
   }if (WiFi.status() == WL_CONNECTED ){
@@ -68,12 +69,12 @@ void loop()
     }
   // if (touchRead(T0)==0) Serial.println("Button Pressed"); // Reads the touch pin 0 and if the pin is touched ie connected to ground it value will be 0 
   //    delay(1000);
-  // if (touchRead(T0)>0) Serial.println("Button not Pressed");
+  // if (touchRead(T0)>0) Serial.println("Button nozt Pressed");
   //     delay(1000);
 }
 
 void makeIFTTTRequest () {
-Serial.print("Connecting to ");
+Serial.println("Connecting to ");
 Serial.print(server);
 
 WiFiClient client;
