@@ -5,10 +5,10 @@
 
 const char* NAME;
 const char* ID;
-const char* ssid     = "TPG 7C42";
-const char* password = "abcd1976";
-// const char* ssid     = "edu.Trade";
-// const char* password = "Welcome@2020";
+//const char* ssid     = "TPG 7C42";
+//const char* password = "abcd1976";
+const char* ssid     = "edu.Trade";
+const char* password = "Welcome@2020";
 const char* host = "127.0.0.1";
 
 
