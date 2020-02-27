@@ -8,6 +8,8 @@
 
 #include <WiFi.h>
 
+#define LED 2
+
 const char* ssid     = "TPG 7C42";
 const char* password = "abcd1976";
 
@@ -20,6 +22,7 @@ const char* password = "abcd1976";
 
 void setup()
 {
+    pinMode(LED,OUTPUT);
     Serial.begin(115200);
     delay(10);
 
@@ -47,5 +50,10 @@ int value = 0;
 
 void loop()
 {
-    
+    if (WiFi.status() == WL_CONNECTED ){
+        delay(500);
+        digitalWrite(LED,HIGH);
+        delay(500);
+        digitalWrite(LED,LOW);
+    }
 }
