@@ -1,5 +1,6 @@
 #include <WiFi.h>
 #include <SPI.h>
+#include <HTTPClient.h>
 #include <HardwareSerial.h>
 
 #define LED 2
@@ -60,7 +61,8 @@ void loop()
     Serial.print("Button pressed ");
     makeIFTTTRequest();
 
-  }if (WiFi.status() == WL_CONNECTED ){
+  }
+    if (WiFi.status() == WL_CONNECTED ){
         delay(500);
         digitalWrite(LED,HIGH);
         delay(500);
@@ -101,7 +103,35 @@ int retries = 5;
        
 // Post the button press to IFTTT
   if (client.connect(server, httpPort)) {
-      Serial.print("hurray");
-      delay(500);
+
+  HTTPClient http;   
+ 
+   http.begin(server);  //Specify destination for HTTP request
+   http.addHeader("Content-Type", "text/plain");             //Specify content-type header
+ 
+   int httpResponseCode = http.POST("resource");   //Send the actual POST request
+ 
+   if(httpResponseCode>0){
+ 
+    String response = http.getString();                       //Get the response to the request
+ 
+    Serial.println(httpResponseCode);   //Print return code
+    Serial.println(response);           //Print request answer
+ 
+   }else{
+ 
+    Serial.print("Error on sending POST: ");
+    Serial.println(httpResponseCode);
+ 
+   }
+ 
+   http.end();  //Free resources
+ 
+ }else{
+ 
+    Serial.println("Error in WiFi connection");   
+ 
+ }
+ 
+  delay(10000);  //Send a request every 10 se
   }
-}
