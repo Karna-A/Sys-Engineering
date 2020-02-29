@@ -170,8 +170,8 @@ void triggerButtonEvent(String eventName)
   // Post the button press to IFTTT
   if (client.connect(IFTTT_URL, httpPort)) {
 
-    // Sent HTTP POST Request with JSON data
-    client.println("POST "+ url +" HTTP/1.1");
+    // Snt HTTP POST Request with JSON data
+    client.println("POST "+ url +" HTTP/1.1");e
     Serial.println("POST "+ url +" HTTP/1.1");
     client.println("Host: "+ String(IFTTT_URL));
     Serial.println("Host: "+ String(IFTTT_URL));
