@@ -6,10 +6,10 @@
 #define LED 2
 const char* NAME;
 const char* ID;
-const char* ssid     = "TPG 7C42";
-const char* password = "abcd1976";
-//const char* ssid     = "edu.Trade";
-//const char* password = "Welcome@2020";
+// const char* ssid     = "TPG 7C42";
+// const char* password = "abcd1976";
+const char* ssid     = "edu.Trade";
+const char* password = "Welcome@2020";
 const char* host = "12.0.0.1";
 const uint16_t port = 17;
 

@@ -10,9 +10,9 @@ void setup()
 
 void loop()
 {
-
-  if (touchRead(T0)==0) Serial.println("Button Pressed"); // Reads the touch pin 0 and if the pin is touched ie connected to ground it value will be 0 
-      delay(1000);
-  if (touchRead(T0)>0) Serial.println("Button not Pressed");
-      delay(1000);
+  Serial.println(touchRead(T0));
+  // if (touchRead(T0)<50) Serial.println("Button Pressed"); // Reads the touch pin 0 and if the pin is touched ie connected to ground it value will be 0 
+  //     delay(1000);
+  // if (touchRead(T0)>50) Serial.println("Button not Pressed");
+  //     delay(1000);
 }
