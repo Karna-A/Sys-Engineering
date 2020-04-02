@@ -11,3 +11,6 @@ I've lost count of how many failed project ideas ive been through,
 
 #02/04/2020
 'The virus is going to kill us all anyway' i tell myself as i continue to avoid working on my folio
+
+#04/04/2020
+What even is time anymore, the days are just divided into two periods, coffee drinking hours and drinking drinking hours......
