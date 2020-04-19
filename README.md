@@ -14,3 +14,6 @@ I've lost count of how many failed project ideas ive been through,
 
 #04/04/2020
 What even is time anymore, the days are just divided into two periods, coffee drinking hours and drinking drinking hours......
+
+#19/04/2020
+Finally got the last 4 months worth of folio done, its a heaping pile of shit but its my heaping pile of shit i gave birth to whole high on caffeine. I mean times just a made up concept right...... i swear i dont have a procastination addiction
