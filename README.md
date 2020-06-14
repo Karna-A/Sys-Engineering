@@ -17,3 +17,6 @@ What even is time anymore, the days are just divided into two periods, coffee dr
 
 #19/04/2020
 Finally got the last 4 months worth of folio done, its a heaping pile of shit but its my heaping pile of shit i gave birth to whole high on caffeine. I mean times just a made up concept right...... i swear i dont have a procastination addiction
+
+#15/06/2020
+All i do in class is scroll through reddit ;(
