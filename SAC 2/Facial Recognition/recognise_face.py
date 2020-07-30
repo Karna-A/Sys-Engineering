@@ -1,6 +1,11 @@
 #code forked and tweaked from https://github.com/ageitgey/face_recognition/blob/master/examples/facerec_from_webcam_faster.py
 #to extend, just add more people into the known_people folder
-
+#Install libs
+# pip3 install cmake
+# pip3 install face_recognition
+# pip3 install numpy
+# pip3 install dlib
+# pip3 install opencv-python
 import face_recognition
 import cv2
 import numpy as np
