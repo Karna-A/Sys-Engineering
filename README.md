@@ -20,3 +20,6 @@ Finally got the last 4 months worth of folio done, its a heaping pile of shit bu
 
 #15/06/2020
 All i do in class is scroll through reddit ;(
+
+#08/08/2020 
+My girlfriend found my github and now she's calling me a lonely nerd, send help :(
