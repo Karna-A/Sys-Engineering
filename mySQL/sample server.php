@@ -19,4 +19,6 @@
                 if (!$query) {
                     die ('SQL Error: ' . mysqli_error($conn));
                 }
+
+                
                 ?>

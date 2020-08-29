@@ -36,7 +36,7 @@ void setup()
 
 
   Serial.println();
-  Serial.println();
+  Serial.println();  
   Serial.print("Connecting to ");
   Serial.println(ssid);
 
@@ -56,7 +56,7 @@ int value = 0;
 
 void loop()
 {
-   if (touchRead(T0)==0){
+   if (touchRead(T0)  ==0){
     Serial.print("Button pressed");
     makeIFTTTRequest();
 

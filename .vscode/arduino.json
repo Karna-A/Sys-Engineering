@@ -1,7 +1,7 @@
 {
-    "board": "arduino:avr:diecimila",
-    "configuration": "cpu=atmega328",
+    "board": "esp32:esp32:node32s",
+    "configuration": "FlashFreq=80,UploadSpeed=921600",
     "port": "COM4",
-    "sketch": "Arduino Stuff\\LCD\\I2C_LCD_TUTORIAL.ino",
+    "sketch": "Arduino Stuff\\ULP\\ulp.ino",
     "programmer": "Arduino as ISP"
 }
